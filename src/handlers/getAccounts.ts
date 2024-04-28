@@ -7,6 +7,7 @@ import {
 import { GetAccountsModule } from "../libs/functions/get_accounts/module";
 import { GetAccountsController } from "../libs/functions/get_accounts/controller";
 import { initializeApplicationContext } from "../libs/utils/application.context";
+import { authEnvSecrets } from "../libs/configs/auth.config";
 
 let applicationContext: INestApplicationContext = null;
 
@@ -16,7 +17,8 @@ export const handler: Handler<
 > = async (event, context): Promise<APIGatewayProxyResult> => {
   const appContext = await initializeApplicationContext(
     applicationContext,
-    GetAccountsModule
+    GetAccountsModule,
+    [authEnvSecrets]
   );
   const controller = appContext.get(GetAccountsController);
 

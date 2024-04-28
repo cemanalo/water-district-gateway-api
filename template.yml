@@ -18,7 +18,7 @@ Globals:
     Architectures:
       - arm64
     Layers:
-      - arn:aws:lambda:ap-southeast-1:975050335698:layer:water-district-deps:3
+      - arn:aws:lambda:ap-southeast-1:975050335698:layer:water-district-gateway-api-deps:2
       - arn:aws:lambda:ap-southeast-1:044395824272:layer:AWS-Parameters-and-Secrets-Lambda-Extension-Arm64:11
 
 Parameters:
@@ -53,13 +53,13 @@ Resources:
             Path: /accounts
             Method: get
             # RestApiId: !Ref WaterDistrictAccountApi
-      # Policies:
-      # - Statement:
-      #   - Sid: SSMGetParameterPolicy
-      #     Effect: Allow
-      #     Action:
-      #       - ssm:GetParameter
-      #     Resource: arn:aws:ssm:ap-southeast-1:975050335698:parameter/water-district-db/*
+      Policies:
+      - Statement:
+        - Sid: SSMGetParameterPolicy
+          Effect: Allow
+          Action:
+            - ssm:GetParameter
+          Resource: arn:aws:ssm:ap-southeast-1:975050335698:parameter/water-district-auth/*
 
   # GetAccountByIdApi:
   #   Type: AWS::Serverless::Function

@@ -3,6 +3,7 @@ node_modules
 nodejs
 
 water-district-deps.zip
+water-district-gateway-api-deps.zip
 .aws-sam
 
 .env
@@ -11,3 +12,5 @@ env.json
 env.*.json
 
 .DS_Store
+
+test.ts

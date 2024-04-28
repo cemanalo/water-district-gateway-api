@@ -1,15 +1,15 @@
 _packDepsLayer:
 	rm -rf nodejs
-	rm -f water-billing-deps.zip
+	rm -f water-district-gateway-api-deps.zip
 	mkdir nodejs
 	cp package.json package-lock.json nodejs
 	cd nodejs && npm install --omit=dev
-	zip -vr water-district-deps.zip nodejs/
+	zip -vr water-district-gateway-api-deps.zip nodejs/
 
 _publishDepsLayer:
-	aws lambda publish-layer-version --layer-name water-district-deps \
+	aws lambda publish-layer-version --layer-name water-district-gateway-api-deps \
     --description "water billing deps Layer" \
-    --zip-file fileb://water-district-deps.zip \
+    --zip-file fileb://water-district-gateway-api-deps.zip \
     --compatible-runtimes nodejs \
     --compatible-architectures "arm64"
 
